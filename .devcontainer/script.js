@@ -1,58 +1,63 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const quotes = [
+        "The quick brown fox jumps over the lazy dog.",
+        "Programming is fun and challenging.",
+        "Typing speed matters in the digital age.",
+        "Practice makes perfect.",
+        "Coding is an art and science.",
+    ];
 
-.container {
-    background-color: #fff;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
+    const quoteElement = document.getElementById("quote");
+    const textElement = document.getElementById("text");
+    const userInput = document.getElementById("user-input");
+    const resultElement = document.getElementById("result");
+    const startButton = document.getElementById("start-button");
 
-h1 {
-    color: #333;
-}
+    let currentQuoteIndex = 0;
+    let startTime, endTime;
 
-#quote {
-    font-style: italic;
-    color: #666;
-}
+    startButton.addEventListener("click", startGame);
 
-#text {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
-}
+    function startGame() {
+        currentQuoteIndex = 0;
+        resultElement.textContent = "";
+        startButton.disabled = true;
+        startButton.textContent = "Game in progress...";
+        showNextQuote();
+        userInput.value = "";
+        userInput.addEventListener("input", checkInput);
+        userInput.focus();
+    }
 
-#user-input {
-    width: 90%;
-    padding: 10px;
-    font-size: 16px;
-    margin-top: 10px;
-}
+    function showNextQuote() {
+        if (currentQuoteIndex < quotes.length) {
+            quoteElement.textContent = "Type the text below:";
+            textElement.textContent = quotes[currentQuoteIndex];
+        } else {
+            endGame();
+        }
+    }
 
-#result {
-    font-size: 20px;
-    margin-top: 20px;
-    font-weight: bold;
-}
+    function checkInput() {
+        if (currentQuoteIndex < quotes.length) {
+            if (userInput.value === quotes[currentQuoteIndex]) {
+                currentQuoteIndex++;
+                userInput.value = "";
+                showNextQuote();
+                if (currentQuoteIndex === quotes.length) {
+                    endGame();
+                }
+            }
+        }
+    }
 
-#start-button {
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-#start-button:hover {
-    background-color: #45a049;
-}
+    function endGame() {
+        startTime = performance.now() - startTime;
+        const totalTime = (endTime - startTime) / 1000;
+        const wordsPerMinute = (quotes.join(" ").split(" ").length / totalTime) * 60;
+        resultElement.textContent = `Game Over! You completed X quotes in X difficulty!`;
+        startButton.textContent = "Restart Game";
+        startButton.disabled = false;
+        userInput.removeEventListener("input", checkInput);
+    }
+});
