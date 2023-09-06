@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Arrays for quotes.
     const quotes = {
         easy: [
             "Programming is a valuable skill.",
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
     };
 
+    // Get references to HTML elements.
     const quoteElement = document.getElementById("quote");
     const textElement = document.getElementById("text");
     const userInput = document.getElementById("user-input");
@@ -42,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const mediumButton = document.getElementById("medium-button");
     const hardButton = document.getElementById("hard-button");
 
+    // Initialize game variables.
     let currentQuoteIndex = 0;
     let timerInterval;
     let seconds = 0;
@@ -49,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let gameStarted = false;
     let sentencesToType = [];
 
+    // Function to highlight the active difficulty button.
     function highlightDifficultyButton(difficulty) {
         easyButton.classList.remove("difficulty-button-active");
         mediumButton.classList.remove("difficulty-button-active");
@@ -63,10 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Event listeners for difficulty buttons.
     easyButton.addEventListener("click", () => selectDifficulty("easy"));
     mediumButton.addEventListener("click", () => selectDifficulty("medium"));
     hardButton.addEventListener("click", () => selectDifficulty("hard"));
 
+    // Function to select a difficulty level.
     function selectDifficulty(difficulty) {
         selectedDifficulty = difficulty;
         quoteElement.textContent = "Choose a difficulty level:";
@@ -74,8 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
         highlightDifficultyButton(difficulty);
         sentencesToType = getRandomSentences(quotes[selectedDifficulty], 5);
         startButton.disabled = false;
+        startButton.addEventListener("click", startGameOnce);
     }
 
+    // Function to get random sentences from a list.
     function getRandomSentences(sentences, count) {
         const shuffledSentences = sentences.slice();
         for (let i = shuffledSentences.length - 1; i > 0; i--) {
@@ -85,32 +93,36 @@ document.addEventListener("DOMContentLoaded", function () {
         return shuffledSentences.slice(0, count);
     }
 
-    function startGame() {
-        if (selectedDifficulty) {
-            gameStarted = true;
-            currentQuoteIndex = 0;
-            resultElement.textContent = "";
-            startButton.disabled = true;
-            startButton.textContent = "Game in progress...";
-            showNextQuote();
-            userInput.value = "";
-            userInput.addEventListener("input", checkInput);
-            userInput.focus();
-            seconds = 0;
-            updateTimer();
-            timerInterval = setInterval(updateTimer, 1000);
-        } else {
-            alert("Please select a difficulty level first.");
-        }
+    // Function to start the game once.
+    function startGameOnce() {
+        startButton.removeEventListener("click", startGameOnce);
+        easyButton.disabled = true;
+        mediumButton.disabled = true;
+        hardButton.disabled = true;
+
+        gameStarted = true;
+        currentQuoteIndex = 0;
+        resultElement.textContent = "";
+        startButton.disabled = true;
+        startButton.textContent = "Game in progress...";
+        showNextQuote();
+        userInput.value = "";
+        userInput.addEventListener("input", checkInput);
+        userInput.focus();
+
+        clearInterval(timerInterval);
+        seconds = 0;
+        updateTimer();
+        timerInterval = setInterval(updateTimer, 1000);
     }
 
-    startButton.addEventListener("click", startGame);
-
+    // Function to update the timer.
     function updateTimer() {
         timerElement.textContent = `Time: ${seconds} seconds`;
         seconds++;
     }
 
+    // Function to display the next quote.
     function showNextQuote() {
         if (currentQuoteIndex < sentencesToType.length) {
             quoteElement.textContent = "Type the text below:";
@@ -120,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Function to check user input.
     function checkInput() {
         if (currentQuoteIndex < sentencesToType.length) {
             const currentQuote = sentencesToType[currentQuoteIndex];
@@ -146,8 +159,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+
+    // Array to store game history.
     const gameHistory = [];
 
+    // Function to add a game to the history.
     function addGameToHistory(difficulty, timeSpent, wordsPerMinute) {
         const tableBody = document.querySelector("#game-history tbody");
 
@@ -182,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Function to end the game.
     function endGame() {
         clearInterval(timerInterval);
         const wordsPerMinute = (
@@ -197,5 +214,8 @@ document.addEventListener("DOMContentLoaded", function () {
         textElement.textContent = "";
 
         addGameToHistory(selectedDifficulty, seconds, wordsPerMinute);
+        easyButton.disabled = false;
+        mediumButton.disabled = false;
+        hardButton.disabled = false;
     }
 });
