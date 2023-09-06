@@ -100,3 +100,11 @@ h1 {
     background-color: #66bb6a !important;
     color: #fff !important;
 }
+
+.correct {
+    color: #4CAF50;
+}
+
+.mistyped {
+    color: #FF0000;
+}

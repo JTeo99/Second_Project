@@ -61,7 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function startGame() {
-        if (!gameStarted && selectedDifficulty) {
+        if (!gameStarted) {
+            if (!selectedDifficulty) {
+                alert("Please select a difficulty level.");
+                return;
+            }
+
             gameStarted = true;
             currentQuoteIndex = 0;
             resultElement.textContent = "";
@@ -95,13 +100,27 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkInput() {
         const difficultyQuotes = quotes[selectedDifficulty];
         if (currentQuoteIndex < difficultyQuotes.length) {
-            if (userInput.value === difficultyQuotes[currentQuoteIndex]) {
+            const currentQuote = difficultyQuotes[currentQuoteIndex];
+            const userInputValue = userInput.value;
+            let typedText = '';
+
+            for (let i = 0; i < currentQuote.length; i++) {
+                const isCorrect = currentQuote[i] === userInputValue[i];
+                const charClass = isCorrect ? 'correct' : (userInputValue[i] ? 'mistyped' : '');
+                typedText += `<span class="${charClass}">${currentQuote[i]}</span>`;
+            }
+            textElement.innerHTML = typedText;
+
+            if (userInputValue === currentQuote) {
                 currentQuoteIndex++;
-                userInput.value = "";
-                showNextQuote();
-                if (currentQuoteIndex === difficultyQuotes.length) {
+
+                if (currentQuoteIndex < difficultyQuotes.length) {
+                    showNextQuote();
+                } else {
                     endGame();
                 }
+
+                userInput.value = "";
             }
         }
     }
@@ -111,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const wordsPerMinute = (
             (quotes[selectedDifficulty].join(" ").split(" ").length / (seconds / 60))
         ).toFixed(2);
-        resultElement.textContent = `Game Over! Your typing speed: ${wordsPerMinute} WPM`;
+        resultElement.textContent = `Game Over! Your typing speed (${selectedDifficulty}): ${wordsPerMinute} WPM`;
         startButton.textContent = "Restart Game";
         startButton.disabled = false;
         userInput.removeEventListener("input", checkInput);
