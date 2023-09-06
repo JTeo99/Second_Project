@@ -4,16 +4,31 @@ document.addEventListener("DOMContentLoaded", function () {
             "Programming is a valuable skill.",
             "Coding is fun and creative.",
             "Practice makes perfect.",
+            "Touch typing is a necessity.",
+            "Starting off with easy.",
+            "This sentence is not too hard.",
+            "I wish I could type faster.",
+            "Building websites is fun."
         ],
         medium: [
             "The quick brown fox jumps over the lazy dog.",
             "JavaScript is a scripting language.",
             "Debugging can be challenging but rewarding.",
+            "Coding is exciting, I want to learn more.",
+            "Whatever you are, be a good one.",
+            "Happiness is not by chance, but by choice.",
+            "I may not be with you, but I am always there for you!",
+            "Sometimes later becomes never. Do it now."
         ],
         hard: [
             "The quick brown fox jumps over the lazy dog.",
             "HTML, CSS, and JavaScript are web technologies.",
             "Algorithmic thinking is important for coding interviews.",
+            "Work hard in silence; let success make the noise.",
+            "I have three things to do today: wash my car, call my mother, and feed my dog.",
+            "I haven't been everywhere, but it's on my list.",
+            "Music should strike fire from people's hearts.",
+            "Sphinx of black quartz, judge my vow."
         ],
     };
 
@@ -32,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let seconds = 0;
     let selectedDifficulty = "";
     let gameStarted = false;
+    let sentencesToType = [];
 
     function highlightDifficultyButton(difficulty) {
         easyButton.classList.remove("difficulty-button-active");
@@ -57,7 +73,20 @@ document.addEventListener("DOMContentLoaded", function () {
             quoteElement.textContent = "Choose a difficulty level:";
             textElement.textContent = "";
             highlightDifficultyButton(difficulty);
+
+            // Select 5 random sentences for the user to type
+            sentencesToType = getRandomSentences(quotes[selectedDifficulty], 5);
+            startGame();
         }
+    }
+
+    function getRandomSentences(sentences, count) {
+        const shuffledSentences = sentences.slice(); // Create a copy of sentences
+        for (let i = shuffledSentences.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledSentences[i], shuffledSentences[j]] = [shuffledSentences[j], shuffledSentences[i]];
+        }
+        return shuffledSentences.slice(0, count);
     }
 
     function startGame() {
@@ -88,19 +117,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showNextQuote() {
-        const difficultyQuotes = quotes[selectedDifficulty];
-        if (currentQuoteIndex < difficultyQuotes.length) {
+        if (currentQuoteIndex < sentencesToType.length) {
             quoteElement.textContent = "Type the text below:";
-            textElement.textContent = difficultyQuotes[currentQuoteIndex];
+            textElement.textContent = sentencesToType[currentQuoteIndex];
         } else {
             endGame();
         }
     }
 
     function checkInput() {
-        const difficultyQuotes = quotes[selectedDifficulty];
-        if (currentQuoteIndex < difficultyQuotes.length) {
-            const currentQuote = difficultyQuotes[currentQuoteIndex];
+        if (currentQuoteIndex < sentencesToType.length) {
+            const currentQuote = sentencesToType[currentQuoteIndex];
             const userInputValue = userInput.value;
             let typedText = '';
 
@@ -114,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (userInputValue === currentQuote) {
                 currentQuoteIndex++;
 
-                if (currentQuoteIndex < difficultyQuotes.length) {
+                if (currentQuoteIndex < sentencesToType.length) {
                     showNextQuote();
                 } else {
                     endGame();
@@ -128,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function endGame() {
         clearInterval(timerInterval);
         const wordsPerMinute = (
-            (quotes[selectedDifficulty].join(" ").split(" ").length / (seconds / 60))
+            (sentencesToType.join(" ").split(" ").length / (seconds / 60))
         ).toFixed(2);
         resultElement.textContent = `Game Over! Your typing speed (${selectedDifficulty}): ${wordsPerMinute} WPM`;
         startButton.textContent = "Restart Game";
