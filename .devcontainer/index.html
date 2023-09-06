@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--Linking css file-->
+    <title>Typing Speed Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!--Base for game-->
     <div class="container">
         <h1>Typing Speed Test</h1>
-        <div id="easy"></div>
-        <div id="medium"></div>
-        <div id="hard"></div>
-        <div id="timer"></div>
-        <p id="quote">Type the text below:</p>
+        <div id="difficulty-buttons">
+            <button id="easy-button">Easy</button>
+            <button id="medium-button">Medium</button>
+            <button id="hard-button">Hard</button>
+        </div>
+        <p id="quote">Choose a difficulty level:</p>
         <p id="text"></p>
         <input type="text" id="user-input" placeholder="Start typing..." autofocus>
+        <p id="timer">Time: 0 seconds</p>
         <p id="result"></p>
         <button id="start-button">Start Game</button>
     </div>
-    <!--Linking javascript-->
     <script src="script.js"></script>
 </body>
+
 </html>

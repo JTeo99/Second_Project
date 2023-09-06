@@ -31,9 +31,16 @@ h1 {
 }
 
 #user-input {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     font-size: 16px;
+    margin-top: 10px;
+}
+
+#timer {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
     margin-top: 10px;
 }
 
@@ -41,6 +48,7 @@ h1 {
     font-size: 20px;
     margin-top: 20px;
     font-weight: bold;
+    color: #4CAF50;
 }
 
 #start-button {
@@ -55,4 +63,35 @@ h1 {
 
 #start-button:hover {
     background-color: #45a049;
+}
+
+#difficulty-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#easy-button,
+#medium-button,
+#hard-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+#easy-button:hover,
+#medium-button:hover,
+#hard-button:hover {
+    background-color: #45a049;
+}
+
+#easy-button:disabled,
+#medium-button:disabled,
+#hard-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
