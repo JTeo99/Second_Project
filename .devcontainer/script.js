@@ -72,17 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
         quoteElement.textContent = "Choose a difficulty level:";
         textElement.textContent = "";
         highlightDifficultyButton(difficulty);
-
-        // Select 5 random sentences for the user to type
         sentencesToType = getRandomSentences(quotes[selectedDifficulty], 5);
         startButton.disabled = false;
-
-        // Register the "Start Game" button event listener
-        startButton.addEventListener("click", startGameOnce);
     }
 
     function getRandomSentences(sentences, count) {
-        const shuffledSentences = sentences.slice(); // Create a copy of sentences
+        const shuffledSentences = sentences.slice();
         for (let i = shuffledSentences.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [shuffledSentences[i], shuffledSentences[j]] = [shuffledSentences[j], shuffledSentences[i]];
@@ -90,23 +85,26 @@ document.addEventListener("DOMContentLoaded", function () {
         return shuffledSentences.slice(0, count);
     }
 
-    function startGameOnce() {
-        // Unregister the event listener to prevent multiple game starts
-        startButton.removeEventListener("click", startGameOnce);
-
-        gameStarted = true;
-        currentQuoteIndex = 0;
-        resultElement.textContent = "";
-        startButton.disabled = true;
-        startButton.textContent = "Game in progress...";
-        showNextQuote();
-        userInput.value = "";
-        userInput.addEventListener("input", checkInput);
-        userInput.focus();
-        seconds = 0;
-        updateTimer();
-        timerInterval = setInterval(updateTimer, 1000);
+    function startGame() {
+        if (selectedDifficulty) {
+            gameStarted = true;
+            currentQuoteIndex = 0;
+            resultElement.textContent = "";
+            startButton.disabled = true;
+            startButton.textContent = "Game in progress...";
+            showNextQuote();
+            userInput.value = "";
+            userInput.addEventListener("input", checkInput);
+            userInput.focus();
+            seconds = 0;
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        } else {
+            alert("Please select a difficulty level first.");
+        }
     }
+
+    startButton.addEventListener("click", startGame);
 
     function updateTimer() {
         timerElement.textContent = `Time: ${seconds} seconds`;
@@ -148,6 +146,41 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+    const gameHistory = [];
+
+    function addGameToHistory(difficulty, timeSpent, wordsPerMinute) {
+        const tableBody = document.querySelector("#game-history tbody");
+
+        const newRow = document.createElement("tr");
+
+        const gameCell = document.createElement("td");
+        const difficultyCell = document.createElement("td");
+        const timeSpentCell = document.createElement("td");
+        const wordsPerMinuteCell = document.createElement("td");
+
+        gameCell.textContent = gameHistory.length + 1;
+        difficultyCell.textContent = difficulty;
+        timeSpentCell.textContent = `${timeSpent} seconds`;
+        wordsPerMinuteCell.textContent = wordsPerMinute;
+
+        newRow.appendChild(gameCell);
+        newRow.appendChild(difficultyCell);
+        newRow.appendChild(timeSpentCell);
+        newRow.appendChild(wordsPerMinuteCell);
+
+        tableBody.appendChild(newRow);
+
+        if (gameHistory.length >= 10) {
+            tableBody.removeChild(tableBody.firstElementChild);
+            gameHistory.shift();
+        }
+
+        gameHistory.push({
+            difficulty,
+            timeSpent,
+            wordsPerMinute,
+        });
+    }
 
     function endGame() {
         clearInterval(timerInterval);
@@ -162,5 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
         highlightDifficultyButton("");
         quoteElement.textContent = "";
         textElement.textContent = "";
+
+        addGameToHistory(selectedDifficulty, seconds, wordsPerMinute);
     }
 });
