@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
         medium: [
             "The quick brown fox jumps over the lazy dog.",
             "JavaScript is a scripting language.",
-            "Efficiency is key in software development.",
+            "Debugging can be challenging but rewarding.",
         ],
         hard: [
+            "The quick brown fox jumps over the lazy dog.",
             "HTML, CSS, and JavaScript are web technologies.",
-            "Debugging can be challenging but rewarding.",
             "Algorithmic thinking is important for coding interviews.",
         ],
     };
@@ -31,33 +31,50 @@ document.addEventListener("DOMContentLoaded", function () {
     let timerInterval;
     let seconds = 0;
     let selectedDifficulty = "";
+    let gameStarted = false;
+
+    function highlightDifficultyButton(difficulty) {
+        easyButton.classList.remove("difficulty-button-active");
+        mediumButton.classList.remove("difficulty-button-active");
+        hardButton.classList.remove("difficulty-button-active");
+
+        if (difficulty === "easy") {
+            easyButton.classList.add("difficulty-button-active");
+        } else if (difficulty === "medium") {
+            mediumButton.classList.add("difficulty-button-active");
+        } else if (difficulty === "hard") {
+            hardButton.classList.add("difficulty-button-active");
+        }
+    }
 
     easyButton.addEventListener("click", () => selectDifficulty("easy"));
     mediumButton.addEventListener("click", () => selectDifficulty("medium"));
     hardButton.addEventListener("click", () => selectDifficulty("hard"));
 
     function selectDifficulty(difficulty) {
-        selectedDifficulty = difficulty;
-        easyButton.disabled = true;
-        mediumButton.disabled = true;
-        hardButton.disabled = true;
-        quoteElement.textContent = "Choose a difficulty level:";
-        textElement.textContent = "";
-        startButton.disabled = false;
+        if (!gameStarted) {
+            selectedDifficulty = difficulty;
+            quoteElement.textContent = "Choose a difficulty level:";
+            textElement.textContent = "";
+            highlightDifficultyButton(difficulty);
+        }
     }
 
     function startGame() {
-        currentQuoteIndex = 0;
-        resultElement.textContent = "";
-        startButton.disabled = true;
-        startButton.textContent = "Game in progress...";
-        showNextQuote();
-        userInput.value = "";
-        userInput.addEventListener("input", checkInput);
-        userInput.focus();
-        seconds = 0;
-        updateTimer();
-        timerInterval = setInterval(updateTimer, 1000);
+        if (!gameStarted && selectedDifficulty) {
+            gameStarted = true;
+            currentQuoteIndex = 0;
+            resultElement.textContent = "";
+            startButton.disabled = true;
+            startButton.textContent = "Game in progress...";
+            showNextQuote();
+            userInput.value = "";
+            userInput.addEventListener("input", checkInput);
+            userInput.focus();
+            seconds = 0;
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
     }
 
     function updateTimer() {
@@ -98,9 +115,10 @@ document.addEventListener("DOMContentLoaded", function () {
         startButton.textContent = "Restart Game";
         startButton.disabled = false;
         userInput.removeEventListener("input", checkInput);
-        easyButton.disabled = false;
-        mediumButton.disabled = false;
-        hardButton.disabled = false;
+        gameStarted = false;
+        highlightDifficultyButton("");
+        quoteElement.textContent = "";
+        textElement.textContent = "";
     }
 
     startButton.addEventListener("click", startGame);

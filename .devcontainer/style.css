@@ -95,3 +95,8 @@ h1 {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+.difficulty-button-active {
+    background-color: #66bb6a !important;
+    color: #fff !important;
+}
