@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "Building websites is fun."
         ],
         medium: [
-            "The quick brown fox jumps over the lazy dog.",
+            "I love vanilla ice cream, but my brother prefers chocolate.",
             "JavaScript is a scripting language.",
             "Debugging can be challenging but rewarding.",
             "Coding is exciting, I want to learn more.",
@@ -68,16 +68,17 @@ document.addEventListener("DOMContentLoaded", function () {
     hardButton.addEventListener("click", () => selectDifficulty("hard"));
 
     function selectDifficulty(difficulty) {
-        if (!gameStarted) {
-            selectedDifficulty = difficulty;
-            quoteElement.textContent = "Choose a difficulty level:";
-            textElement.textContent = "";
-            highlightDifficultyButton(difficulty);
+        selectedDifficulty = difficulty;
+        quoteElement.textContent = "Choose a difficulty level:";
+        textElement.textContent = "";
+        highlightDifficultyButton(difficulty);
 
-            // Select 5 random sentences for the user to type
-            sentencesToType = getRandomSentences(quotes[selectedDifficulty], 5);
-            startGame();
-        }
+        // Select 5 random sentences for the user to type
+        sentencesToType = getRandomSentences(quotes[selectedDifficulty], 5);
+        startButton.disabled = false;
+
+        // Register the "Start Game" button event listener
+        startButton.addEventListener("click", startGameOnce);
     }
 
     function getRandomSentences(sentences, count) {
@@ -89,26 +90,22 @@ document.addEventListener("DOMContentLoaded", function () {
         return shuffledSentences.slice(0, count);
     }
 
-    function startGame() {
-        if (!gameStarted) {
-            if (!selectedDifficulty) {
-                alert("Please select a difficulty level.");
-                return;
-            }
+    function startGameOnce() {
+        // Unregister the event listener to prevent multiple game starts
+        startButton.removeEventListener("click", startGameOnce);
 
-            gameStarted = true;
-            currentQuoteIndex = 0;
-            resultElement.textContent = "";
-            startButton.disabled = true;
-            startButton.textContent = "Game in progress...";
-            showNextQuote();
-            userInput.value = "";
-            userInput.addEventListener("input", checkInput);
-            userInput.focus();
-            seconds = 0;
-            updateTimer();
-            timerInterval = setInterval(updateTimer, 1000);
-        }
+        gameStarted = true;
+        currentQuoteIndex = 0;
+        resultElement.textContent = "";
+        startButton.disabled = true;
+        startButton.textContent = "Game in progress...";
+        showNextQuote();
+        userInput.value = "";
+        userInput.addEventListener("input", checkInput);
+        userInput.focus();
+        seconds = 0;
+        updateTimer();
+        timerInterval = setInterval(updateTimer, 1000);
     }
 
     function updateTimer() {
@@ -166,6 +163,4 @@ document.addEventListener("DOMContentLoaded", function () {
         quoteElement.textContent = "";
         textElement.textContent = "";
     }
-
-    startButton.addEventListener("click", startGame);
 });
