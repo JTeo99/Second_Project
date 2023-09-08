@@ -121,7 +121,7 @@ h1 i {
     cursor: not-allowed; /*disables cursor*/
 }
 
-/* styling the difficulty buttons and using !important to ensure they ovveride when active*/
+/* styling the difficulty buttons. !important to ensure that it styles overriding other stylization*/
 .difficulty-button-active {
     background-color: #66bb6a !important;
     color: #fff !important;
@@ -136,7 +136,6 @@ h1 i {
 .mistyped {
     color: #FF0000;
 }
-
 
 .game-history-container {
     border: 1px solid #ccc;

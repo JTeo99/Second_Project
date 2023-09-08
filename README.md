@@ -24,7 +24,39 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 ## Features
 
 - Three difficulty levels to choose from: Easy, Medium, and Hard.
+![Front page](../Second_Project/README-img/Base.png)
+
 - Timer displays the time spent in a 00:00 format.
+![Timer running](../Second_Project/README-img/Game-running.png)
+
 - Real-time feedback on your typing accuracy.
+![Error Checking](../Second_Project/README-img/Error-check.png)
+
 - Game history tracking for your performance.
+![Game history](../Second_Project/README-img/results%20and%20history%20display.png)
+![Game history replacement](../Second_Project/README-img/History%20replace.png)
+
 - Responsive design for a great user experience on various devices.
+![Am I responsive](../Second_Project/README-img/am%20i%20responsive.png)
+
+- Indications as to the difficulty level and forces player to select by showing alert when no difficulty is selected.
+![High-lighted difficulty level](../Second_Project/README-img/Highlight_difficulty.png)
+![Alert when no difficulty is selected](../Second_Project/README-img/Alert.png)
+
+- Background is separated from the game and history box containers and is coloured naturally and compliments each other. Green buttons stand out and allow the whole game to look brighter.
+- Buttons are disabled when game starts to prevent confusing the software and so players do not accidentally cancel their game.
+
+## Testing
+
+- I have tested the page through the browsers: Chrome, safari, Microsoft Edge.
+- I have confirmed the project is responsive and functions on all standard screen sizes using the Chrome developer tool functions and looks good in those screen sizes.
+- I have checked that the buttons work as intended and that the intended functions are working properly.
+- I have checked that the game is clear and concise in its contents and that items are easy to see and understand.
+
+## Bugs
+
+- When mistyping 'spacebar' key it is unclear within the error checking that the key has been mistyped as the function changes font color to red which is non visible with an invisible character.
+
+![Space Error](../Second_Project/README-img/space%20error.png)
+
+  
