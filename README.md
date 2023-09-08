@@ -32,7 +32,7 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 - Real-time feedback on your typing accuracy.
 ![Error Checking](README-img/Error-check.png)
 
-- Game history tracking for your performance.
+- Game history tracking for your performance. End of game results also displays Words per minute (wpm) and the difficulty level to track information and the timer is stopped.
 ![Game history](README-img/results%20and%20history%20display.png)
 ![Game history replacement](README-img/History%20replace.png)
 
