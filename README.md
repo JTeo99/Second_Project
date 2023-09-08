@@ -66,4 +66,4 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 - JavaScript - No errors are returned through the official Jshint validator.
 - Accessibility - I conform that the font is easy to read and there is good accessibility through the lighthouse devtool.
 
-![Lighthouse report](README-img/lighthouse.png.png)
+![Lighthouse report](README-img/lighthouse.png)
