@@ -5,28 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Speed Game</title>
+    <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
+    <!-- Main container for the game -->
+    <div class="container"> 
+        <!-- Game title with a keyboard icon -->
         <h1>Typing Speed Test <i class="fas fa-keyboard"></i></h1>
+        <!-- Difficulty level buttons -->
         <div id="difficulty-buttons">
             <button id="easy-button">Easy</button>
             <button id="medium-button">Medium</button>
             <button id="hard-button">Hard</button>
         </div>
+        <!-- Initial instruction for selecting difficulty -->
         <p id="quote">Choose a difficulty level:</p>
+        <!-- Display area for the text to be typed -->
         <p id="text"></p>
+        <!-- User input text box -->
         <input type="text" id="user-input" placeholder="Start typing..." autofocus>
-        <p id="timer">Time: 0 seconds</p>
+        <!-- Timer to track the time elapsed -->
+        <p id="timer">Time: 00:00</p>
+        <!-- Display result after the game -->
         <p id="result"></p>
+        <!-- Button to start or restart the game -->
         <button id="start-button">Start Game</button>
     </div>
+    <!-- Container for the game history table -->
     <div class="game-history-container">
+        <!-- Table to display game history -->
         <table id="game-history">
+            <!-- Table header with column labels -->
             <thead>
                 <tr>
                     <th>Game</th>
@@ -35,6 +48,7 @@
                     <th>Words Per Minute</th>
                 </tr>
             </thead>
+            <!-- Table body to populate with game data -->
             <tbody>
             </tbody>
         </table>

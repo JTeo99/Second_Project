@@ -14,11 +14,11 @@ To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in t
 
 A button should appear to click: _Open Preview_ or _Open Browser_.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+To run a frontend (HTML, CSS, Javascript only) application iwith no-cache, you can use tn Codeanywhere his alias for `python3 -m http.server`.
 
 `http_server`
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+To,  run a backend Python filetype `python3 app.py`, if your Python file is named `app.py` of course.
 
 A button should appear to click: _Open Preview_ or _Open Browser_.
 
