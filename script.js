@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //It checks whether the user input matches the quote and flags the letters as either correct or incorrect and applies css to the character
             for (let i = 0; i < currentQuote.length; i++) {
                 const isCorrect = currentQuote[i] === userInputValue[i];
-                const charClass = isCorrect ? 'correct' : (userInputValue[i] ? 'mistyped' : '');
+                const charClass = isCorrect ? 'correct' : (userInputValue[i] === ' ' ? 'space-mistyped' : (userInputValue[i] ? 'mistyped' : ''));
                 typedText += `<span class="${charClass}">${currentQuote[i]}</span>`;
             }
             //updates the display with the styled characters

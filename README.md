@@ -55,8 +55,15 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 
 ## Bugs
 
-- When mistyping 'spacebar' key it is unclear within the error checking that the key has been mistyped as the function changes font color to red which is non visible with an invisible character.
+- When mistyping 'spacebar' key it is unclear within the error checking that the key has been mistyped as the function changes font color to red which is non visible with an invisible character. This is a limitation with the CSS as it will not allow me to highlight the spacing between the words creating a situation where we cannot check whether the spacing is correct.
 
 ![Space Error](../Second_Project/README-img/space%20error.png)
 
-  
+## Validator Testing
+
+- HTML - No errors returned through the official W3C validator.
+- CSS - No errors returned through the official Jigsaw validator.
+- JavaScript - No errors are returned through the official Jshint validator.
+- Accessibility - I conform that the font is easy to read and there is good accessibility through the lighthouse devtool.
+
+![Lighthouse report](README-img/space%20error.png)
