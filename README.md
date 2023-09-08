@@ -67,3 +67,14 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 - Accessibility - I conform that the font is easy to read and there is good accessibility through the lighthouse devtool.
 
 ![Lighthouse report](README-img/lighthouse.png)
+
+## Deployment
+
+- The site has been deployed to GitHub pages. This was completed by accessing setting  on the GitHub Project page; clicking on the "pages" tab in the left panel; selecting the master (main) branch to select the /(root) folder; and launching as a website.
+- The live link can be found using this link - [Typing Speed Game](https://jteo99.github.io/Second_Project/)
+
+## Content
+
+- Inspiration for this project has been from websites such as [Monkey Type](https://monkeytype.com/) and [10 Fast Fingers](https://10fastfingers.com/typing-test/english) as some typing tests that I have personally used in the past although the execution of the game is different.
+- Inspiration for the timer was taken from [educative](https://www.educative.io/answers/how-to-create-a-countdown-timer-using-javascript).
+- The keyboard icon used was from [Font Awesome](https://fontawesome.com/)
