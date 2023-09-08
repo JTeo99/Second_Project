@@ -24,24 +24,24 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 ## Features
 
 - Three difficulty levels to choose from: Easy, Medium, and Hard.
-![Front page](../Second_Project/README-img/Base.png)
+![Front page](README-img/Base.png)
 
 - Timer displays the time spent in a 00:00 format.
-![Timer running](../Second_Project/README-img/Game-running.png)
+![Timer running](README-img/Game-running.png)
 
 - Real-time feedback on your typing accuracy.
-![Error Checking](../Second_Project/README-img/Error-check.png)
+![Error Checking](README-img/Error-check.png)
 
 - Game history tracking for your performance.
-![Game history](../Second_Project/README-img/results%20and%20history%20display.png)
-![Game history replacement](../Second_Project/README-img/History%20replace.png)
+![Game history](README-img/results%20and%20history%20display.png)
+![Game history replacement](README-img/History%20replace.png)
 
 - Responsive design for a great user experience on various devices.
-![Am I responsive](../Second_Project/README-img/am%20i%20responsive.png)
+![Am I responsive](README-img/am%20i%20responsive.png)
 
 - Indications as to the difficulty level and forces player to select by showing alert when no difficulty is selected.
-![High-lighted difficulty level](../Second_Project/README-img/Highlight_difficulty.png)
-![Alert when no difficulty is selected](../Second_Project/README-img/Alert.png)
+![High-lighted difficulty level](README-img/Highlight_difficulty.png)
+![Alert when no difficulty is selected](README-img/Alert.png)
 
 - Background is separated from the game and history box containers and is coloured naturally and compliments each other. Green buttons stand out and allow the whole game to look brighter.
 - Buttons are disabled when game starts to prevent confusing the software and so players do not accidentally cancel their game.
@@ -57,7 +57,7 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 
 - When mistyping 'spacebar' key it is unclear within the error checking that the key has been mistyped as the function changes font color to red which is non visible with an invisible character. This is a limitation with the CSS as it will not allow me to highlight the spacing between the words creating a situation where we cannot check whether the spacing is correct.
 
-![Space Error](../Second_Project/README-img/space%20error.png)
+![Space Error](README-img/space%20error.png)
 
 ## Validator Testing
 
@@ -66,4 +66,4 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 - JavaScript - No errors are returned through the official Jshint validator.
 - Accessibility - I conform that the font is easy to read and there is good accessibility through the lighthouse devtool.
 
-![Lighthouse report](README-img/space%20error.png)
+![Lighthouse report](README-img/lighthouse.png.png)
