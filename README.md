@@ -24,24 +24,24 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 ## Features
 
 - Three difficulty levels to choose from: Easy, Medium, and Hard.
-![Front page](README-img/Base.png)
+![Front page])
 
 - Timer displays the time spent in a 00:00 format.
-![Timer running](README-img/Game-running.png)
+![Timer running](assets/base.png)
 
 - Real-time feedback on your typing accuracy.
-![Error Checking](README-img/Error-check.png)
+![Error Checking](assets/error.png)
 
 - Game history tracking for your performance. End of game results also displays Words per minute (wpm) and the difficulty level to track information and the timer is stopped.
-![Game history](README-img/results%20and%20history%20display.png)
-![Game history replacement](README-img/History%20replace.png)
+![Game history](assets/results.png)
+![Game history replacement](assets/historyreplace.png)
 
 - Responsive design for a great user experience on various devices.
-![Am I responsive](README-img/am%20i%20responsive.png)
+![Am I responsive](assets/amiresponsive.png)
 
 - Indications as to the difficulty level and forces player to select by showing alert when no difficulty is selected.
-![High-lighted difficulty level](README-img/Highlight_difficulty.png)
-![Alert when no difficulty is selected](README-img/Alert.png)
+![High-lighted difficulty level](assets/difficulty.png)
+![Alert when no difficulty is selected](assets/alert.png)
 
 - Background is separated from the game and history box containers and is coloured naturally and compliments each other. Green buttons stand out and allow the whole game to look brighter.
 - Buttons are disabled when game starts to prevent confusing the software and so players do not accidentally cancel their game.
@@ -57,7 +57,7 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 
 - When mistyping 'spacebar' key it is unclear within the error checking that the key has been mistyped as the function changes font color to red which is non visible with an invisible character. This is a limitation with the CSS as it will not allow me to highlight the spacing between the words creating a situation where we cannot check whether the spacing is correct.
 
-![Space Error](README-img/space%20error.png)
+![Space Error](assets/space.png)
 
 ## Validator Testing
 
@@ -66,7 +66,7 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 - JavaScript - No errors are returned through the official Jshint validator.
 - Accessibility - I conform that the font is easy to read and there is good accessibility through the lighthouse devtool.
 
-![Lighthouse report](README-img/lighthouse.png)
+![Lighthouse report](assets/lighthouse.png)
 
 ## Deployment
 
