@@ -1,0 +1,184 @@
+/* 
+Reset default browser styles for consistency and added font for whole page with
+a light background colour.
+*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; 
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+Main containter for the game styling. White container offsets from off tone
+background colour of website. Rounded corners to be more visually appealing with
+bos shadows.
+*/
+.container {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/*
+Style the main heading for the game with a keyboard icon from Font Awesome and
+adding dark text colour
+*/
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style the keyboard icon within the h1 element */
+h1 i {
+    font-size: 2rem;
+    margin-left: 10px;
+}
+
+/* styling the quote with grey text colour*/
+#quote {
+    font-style: italic;
+    color: #666;
+}
+
+#text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#user-input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Style timer*/
+#timer {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Style result using lighter green colour for positive feeling feedback*/
+#result {
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Start button with green background colour and white text for clarity*/
+#start-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* darkens button on hover*/
+#start-button:hover {
+    background-color: #45a049; 
+}
+
+#difficulty-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Styling difficulty buttons to match the start button*/
+#easy-button,
+#medium-button,
+#hard-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* Buttons darken on hover*/
+#easy-button:hover,
+#medium-button:hover,
+#hard-button:hover {
+    background-color: #45a049;
+}
+
+/* grayed-out background whilst disabled and disables the button*/
+#easy-button:disabled,
+#medium-button:disabled,
+#hard-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* styling the difficulty buttons. !important to ensure that it styles overriding other stylization*/
+.difficulty-button-active {
+    background-color: #66bb6a !important;
+    color: #fff !important;
+}
+
+/*color of text changes to green when letters are correct*/
+.correct {
+    color: #4CAF50;
+}
+
+/*color of text changes to red when letters are incorrect*/
+.mistyped {
+    color: #FF0000;
+}
+
+/* Container styling*/
+.game-history-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100%);
+    max-width: 800px;
+    overflow: auto;
+}
+
+#game-history {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/*table border styling*/
+#game-history th,
+#game-history td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+/* Table header styling*/
+#game-history th {
+    background-color: #f2f2f2;
+}
+
+/* Even table rows are coloured differently for clarity*/
+#game-history tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
