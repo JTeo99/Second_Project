@@ -24,7 +24,7 @@ Welcome to the Typing Challenge Game! This is a web-based game that tests and im
 ## Features
 
 - Three difficulty levels to choose from: Easy, Medium, and Hard.
-![Front page](assets/images/base.png.png)
+![Front page](assets/images/base.png)
 
 - Real-time feedback on your typing accuracy. Game also shows a timer that updates live for players to know how long they have been typing for live.
 ![Error Checking](assets/images/error.png)
